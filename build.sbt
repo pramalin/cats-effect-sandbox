@@ -1,7 +1,7 @@
 name := "cats-effect-sandbox"
 version := "0.0.1-SNAPSHOT"
 
-scalaVersion := "2.12.7"
+scalaVersion := "2.12.10"
 
 scalacOptions ++= Seq(
   "-encoding", "UTF-8",   // source files are in UTF-8

@@ -1,4 +1,4 @@
-  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
+  println("Welcome to the Scala worksheet")       
 	/*
 	IO
 	
@@ -18,16 +18,16 @@
 	
 	import cats.effect.IO
 	
-	val ioa = IO { println("hey!") }          //> ioa  : cats.effect.IO[Unit] = IO$546718765
+	val ioa = IO { println("hey!") }          
 	
 	val program: IO[Unit] =
 	  for {
 	     _ <- ioa
 	     _ <- ioa
-	  } yield ()                              //> program  : cats.effect.IO[Unit] = IO$1641808846
+	  } yield ()                              
 	
-	program.unsafeRunSync()                   //> hey!
-                                                  //| hey!
+	program.unsafeRunSync()                   
+                                                  
 
 	/*
 	The above example prints “hey!” twice, as the effect re-runs each time it is sequenced
@@ -92,9 +92,9 @@
 	      fib(n - 1, b, b2)
 	    else
 	      IO.pure(b2)
-	  }                                       //> fib: (n: Int, a: Long, b: Long)cats.effect.IO[Long]
+	  }                                       
 
-	fib(100)                                  //> res0: cats.effect.IO[Long] = IO$1845904670
+	fib(100)                                  
 	
 /*
 	IO implements all the typeclasses shown in the hierarchy. Therefore all those operations are
@@ -144,8 +144,8 @@
 	wraps a side a effect in a safe manner, as nothing is going to be executed:
 	*/
 	val pure1 =	IO.pure(25).flatMap(n => IO(println(s"Number is: $n")))
-                                                  //> pure1  : cats.effect.IO[Unit] = IO$1846896625
-  pure1.unsafeRunSync()                           //> Number is: 25
+                                                  
+  pure1.unsafeRunSync()                           
 	
 	
 	/*
@@ -154,8 +154,8 @@
 	*/
 	
 	val pure2 =	IO.pure(println("THIS IS WRONG!"))
-                                                  //> THIS IS WRONG!
-                                                  //| pure2  : cats.effect.IO[Unit] = IO(())
+                                                  
+                                                  
 	pure2.unsafeRunSync()
 	
 	/*
@@ -1221,7 +1221,7 @@
 	Any exceptions raised within the effect will be re-thrown during evaluation.
 	*/
 	
-	IO(println("Sync!")).unsafeRunSync()      //> Sync!
+	IO(println("Sync!")).unsafeRunSync()      
 	// Sync!
 	
 	/*
@@ -1239,7 +1239,7 @@
 	*/
 	
 	IO(println("Async!")).unsafeRunAsync(_ => ())
-                                                  //> Async!
+                                                  
 	// Async!
 	
 	/*
@@ -1252,8 +1252,8 @@
 	*/
 	
 	IO(println("Potentially cancelable!")).unsafeRunCancelable(_ => ())
-                                                  //> Potentially cancelable!
-                                                  //| res1: cats.effect.CancelToken[cats.effect.IO] = IO$1899073220
+                                                  
+                                                  
 	// Potentially cancelable!
 	// res88: cats.effect.CancelToken[cats.effect.IO] = IO$1972519422
 
@@ -1284,8 +1284,8 @@
 	import scala.concurrent.duration._
 	
 	IO(println("Timed!")).unsafeRunTimed(5.seconds)
-                                                  //> Timed!
-                                                  //| res2: Option[Unit] = Some(())
+                                                  
+                                                  
 
   /*
   
@@ -1299,7 +1299,7 @@
 	used if interoperating with legacy code which uses Scala futures.
 	*/
 	
-	IO("Gimme a Future!").unsafeToFuture()    //> res3: scala.concurrent.Future[String] = Future(Success(Gimme a Future!))
+	IO("Gimme a Future!").unsafeToFuture()    
 	
 	/*
 	Best Practices
